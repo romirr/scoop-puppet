@@ -1,0 +1,37 @@
+{
+    "version": "0.1.0",
+    "description": "puppet (browser) control: agents drive your real chrome through a small extension and a rust binary",
+    "homepage": "https://github.com/romirr/puppet",
+    "license": "Apache-2.0",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/romirr/puppet/releases/download/v0.1.0/puppet-x86_64-pc-windows-msvc.zip",
+            "hash": "d8e6d82028c177f9e0cfc27913283364f56d8cb047c17e9684985162ba445a90"
+        },
+        "arm64": {
+            "url": "https://github.com/romirr/puppet/releases/download/v0.1.0/puppet-aarch64-pc-windows-msvc.zip",
+            "hash": "2f760e6c58f37b0ad6adb750f309c86103b86094455b96178b1748df477eeae5"
+        }
+    },
+    "bin": "puppet.exe",
+    "notes": [
+        "puppet needs a browser extension and a native host registration, once:",
+        "  puppet install",
+        "then in chrome: chrome://extensions, developer mode, load unpacked (the folder puppet install prints). check with: puppet doctor"
+    ],
+    "checkver": "github",
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/romirr/puppet/releases/download/v$version/puppet-x86_64-pc-windows-msvc.zip"
+            },
+            "arm64": {
+                "url": "https://github.com/romirr/puppet/releases/download/v$version/puppet-aarch64-pc-windows-msvc.zip"
+            }
+        },
+        "hash": {
+            "url": "https://github.com/romirr/puppet/releases/download/v$version/SHA256SUMS",
+            "regex": "$sha256\\s+$basename"
+        }
+    }
+}
